@@ -42,6 +42,39 @@ router.post('/', function (req, res) {
     res.json(person);
 });
 
+
+router.post('/import', function (req, res) {
+    if (!req.body.dump) {
+        res.status(400).send('Dump not set');
+        return;
+    }
+
+    const dump = req.body.dump;
+    const persons = [];
+
+    for (var i = 0; i < dump.length; i++) {
+        if (!dump[i].name) {
+            res.status(400).send('Name not set');
+            return;
+        }
+
+        const person = new Person({
+            name: dump[i].name,
+            regular: dump[i].regular
+        });
+
+        person.save(function (error) {
+            if (error) {
+                res.status(500).json(error)
+            }
+        });
+
+        persons.push(person);
+    }
+
+    res.json(persons);
+});
+
 router.get('/:id', function (req, res) {
     Person.findById(req.params.id, function (err, person) {
         if (err) {
