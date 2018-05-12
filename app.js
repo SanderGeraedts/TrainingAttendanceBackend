@@ -8,9 +8,10 @@ const practiceRoutes = require('./routes/practices');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/attendance';
 
 // Connects DB
-mongoose.connect('mongodb://localhost/attendance');
+mongoose.connect(mongodbUri);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
