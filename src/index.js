@@ -1,10 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const mongoose = require('mongoose');
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
+import mongoose from 'mongoose';
+import 'babel-polyfill';
 
-const personRoutes = require('./routes/persons');
-const practiceRoutes = require('./routes/practices');
+import personRoutes from './routes/persons';
+import practiceRoutes from './routes/practices';
 
 const app = express();
 const port = process.env.PORT || 3000;

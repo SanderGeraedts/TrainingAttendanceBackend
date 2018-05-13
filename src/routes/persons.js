@@ -1,6 +1,8 @@
-var express = require('express');
-var Person = require('../models/Person');
-var router = express.Router();
+import express from'express';
+
+import {Person} from '../models/Person';
+
+let router = express.Router();
 
 router.get('/', function (req, res) {
     Person.find({}, function (err, persons) {
@@ -52,7 +54,7 @@ router.post('/import', function (req, res) {
     const dump = req.body.dump;
     const persons = [];
 
-    for (var i = 0; i < dump.length; i++) {
+    for (let i = 0; i < dump.length; i++) {
         if (!dump[i].name) {
             res.status(400).send('Name not set');
             return;

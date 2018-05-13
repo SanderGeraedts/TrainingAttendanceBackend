@@ -1,8 +1,8 @@
-var express = require('express');
-var Practice = require('../models/Practice');
-var Attendance = require('../models/Attendance');
-var Person = require('../models/Person');
-var router = express.Router();
+let express = require('express');
+let Practice = require('../models/Practice');
+let Attendance = require('../models/Attendance');
+let Person = require('../models/Person');
+let router = express.Router();
 
 router.get('/', function (req, res) {
     Practice.find({})
