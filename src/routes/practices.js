@@ -1,8 +1,13 @@
-let express = require('express');
-let Practice = require('../models/Practice');
-let Attendance = require('../models/Attendance');
-let Person = require('../models/Person');
+import express from 'express';
+
+import {Practice} from '../models/Practice';
+import {Attendance} from '../models/Attendance';
+import {Person} from '../models/Person';
+import {verifyJWT_MW} from '../middlewares';
+
 let router = express.Router();
+
+router.all('*', verifyJWT_MW);
 
 router.get('/', function (req, res) {
     Practice.find({})
@@ -101,5 +106,4 @@ router.post('/:id/attendance', function (req, res) {
     });
 });
 
-
-module.exports = router;
+export default router;

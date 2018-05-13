@@ -6,6 +6,7 @@ import 'babel-polyfill';
 
 import personRoutes from './routes/persons';
 import practiceRoutes from './routes/practices';
+import authRoutes from './routes/auth';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ app.use(express.json());
 // Routes
 app.use('/api/persons', personRoutes);
 app.use('/api/practices', practiceRoutes);
+app.use('/api/auth', authRoutes);
 
 // Starts server
 app.listen(port, function () {

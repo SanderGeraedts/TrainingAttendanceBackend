@@ -1,8 +1,11 @@
 import express from'express';
 
 import {Person} from '../models/Person';
+import {verifyJWT_MW} from '../middlewares';
 
 let router = express.Router();
+
+router.all('*', verifyJWT_MW);
 
 router.get('/', function (req, res) {
     Person.find({}, function (err, persons) {
@@ -113,4 +116,4 @@ router.delete('/:id', function (req, res) {
     });
 });
 
-module.exports = router;
+export default router;
